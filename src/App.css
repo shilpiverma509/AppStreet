@@ -1,25 +1,28 @@
-.App {
-    text-align: center;
+.images {
+    width: 100%;
+    height: 120px;
 }
 
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
+h4,
+h3 {
+    font-size: 12px;
 }
 
-.App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white;
+.ui.header {
+    font-weight: 100;
 }
 
-.App-title {
-    font-size: 1.5em;
+.ui.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+    font-size: 15px;
 }
 
-.App-intro {
-    font-size: large;
+a {
+    color: black;
+}
+
+.product {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 @keyframes App-logo-spin {
@@ -31,6 +34,36 @@
     }
 }
 
-.detail {
-    color: black
+.ui.menu {
+    box-shadow: none;
+}
+
+.ui.item.menu {
+    margin-right: 2px;
+}
+
+.ui.list .list>.item .header,
+.ui.list>.item .header {
+    font-weight: 100;
+}
+
+.ui segment {
+    margin-right: 2px;
+}
+
+.ui.grid>.row>.column {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+}
+
+@media only screen and (max-width: 985px) {
+    .images {
+        width: 90px;
+        height: 90px;
+    }
 }
