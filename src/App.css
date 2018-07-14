@@ -71,7 +71,7 @@ ul:not(.browser-default)>li {
     margin: 5px;
     padding: 5px;
     border: 2px solid blue;
-    background: lightgrey
+    background: lightgrey;
 }
 
 .footer {
@@ -83,10 +83,29 @@ ul:not(.browser-default)>li {
 
 @media (min-height: 320px) {
     .ui.footer {
-        /* Increased specificity for SO snippet priority */
-        position: absolute;
-        bottom: 0;
         width: 100%;
+    }
+}
+
+.ui.text.container {
+    min-height: 600px;
+}
+
+@media only screen and (max-width: 570px) {
+    .item {
+        display: block;
+        width: 100%;
+        border: none;
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 571px) {
+    .item {
+        display: block;
+        width: 30%;
+        border: none;
+        display: block;
     }
 }
 

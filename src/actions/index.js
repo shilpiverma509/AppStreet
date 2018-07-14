@@ -4,9 +4,9 @@ export const FETCH_PRODUCTS = "fetchProducts";
 export const FETCH_PRODUCT = "fetchSingleProduct";
 const ROOT_URL = "https://assignment-appstreet.herokuapp.com/api/v1/products";
 
-export function fetchProducts() {
+export function fetchProducts(page) {
   return dispatch => {
-    axios.get(`${ROOT_URL}?page=1`).then(res => {
+    axios.get(`${ROOT_URL}?page=${page}`).then(res => {
       dispatch({
         type: FETCH_PRODUCTS,
         payload: res

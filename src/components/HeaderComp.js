@@ -11,7 +11,7 @@ const HeaderComp = () => (
       <div className="ui horizontal divided list">
         <div className="item">
           <div className="content">
-            <div className="header">Home</div>
+            <Link to="/">Home</Link>
           </div>
         </div>
         <div className="item">

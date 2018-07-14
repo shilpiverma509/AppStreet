@@ -1,11 +1,29 @@
 import { FETCH_PRODUCTS, FETCH_PRODUCT } from "../actions/index";
 import _ from "lodash";
 
-export default function(state = {}, action) {
+export default function(state = { products: {}, product: {} }, action) {
   switch (action.type) {
     case FETCH_PRODUCTS:
       console.log("reducer", action.payload);
-      return _.mapKeys(action.payload.data.products, "_id");
+      if (action.payload.data.products.length > 0) {
+        document.getElementById("loadMore").removeAttribute("disabled");
+        if (!_.isEmpty(state.products)) {
+          let temp = Object.assign(
+            state.products,
+            _.mapKeys(action.payload.data.products, "_id")
+          );
+          return Object.assign({}, state, { products: temp });
+        }
+        return Object.assign({}, state, {
+          products: _.mapKeys(action.payload.data.products, "_id")
+        });
+        //return { stateproducts: _.mapKeys(action.payload.data.products, "_id") };
+      } else {
+        document
+          .getElementById("loadMore")
+          .setAttribute("disabled", "disabled");
+        return state;
+      }
 
     case FETCH_PRODUCT:
       console.log(action.id);
@@ -78,7 +96,7 @@ export default function(state = {}, action) {
         name: selectedProductObj.name
       };
       //return { ...product };
-      return { ...state, ...product };
+      return Object.assign({}, state, { product: product });
 
     default:
       return state;

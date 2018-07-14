@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchSingleProduct } from "../actions";
+import { Button } from "semantic-ui-react";
 
 class ProductDetail extends React.Component {
   componentWillMount() {
@@ -52,11 +53,15 @@ class ProductDetail extends React.Component {
         </div>
       </div>
     );
+    <Button className="positive ui button">
+      <i className="cart arrow down" />
+      Add to Cart
+    </Button>;
   }
 }
-function mapStateToProps({ products }) {
+function mapStateToProps(state) {
   return {
-    ...products
+    ...state.data.product
   };
 }
 

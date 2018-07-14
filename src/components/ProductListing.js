@@ -7,12 +7,28 @@ import { Container, Button } from "semantic-ui-react";
 import "../App.css";
 
 class ProductListing extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 1
+    };
+  }
   componentDidMount() {
-    this.props.fetchProducts();
+    this.props.fetchProducts(this.state.page);
+    this.setState({
+      page: this.state.page + 1
+    });
+  }
+
+  loadMore(page) {
+    this.props.fetchProducts(page);
+    this.setState({
+      page: this.state.page + 1
+    });
   }
 
   render() {
-    //console.log(this.props);
+    console.log("Hey checking this" + this.props);
     const { products } = this.props;
 
     if (!products) {
@@ -23,15 +39,23 @@ class ProductListing extends React.Component {
       <Container text>
         <ProductCard products={products} />
         <br />
-        <Button size="small">load more</Button>
+        <Button
+          onClick={() => {
+            this.loadMore(this.state.page);
+          }}
+          size="small"
+          id="loadMore"
+        >
+          load more
+        </Button>
       </Container>
     );
   }
 }
 
-function mapStateToProps({ products }) {
+function mapStateToProps(state) {
   return {
-    products
+    products: state.data.products
   };
 }
 export default connect(
