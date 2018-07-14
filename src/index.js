@@ -11,14 +11,14 @@ import ProductListing from "./components/ProductListing";
 import ProductDetail from "./components/ProductDetail";
 import Footer from "./components/Footer";
 import reducers from "./reducers";
-import ReduxPromise from "redux-promise";
+import ReduxThunk from "redux-thunk";
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
-
+//const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
-      <div>
+      <div className="wrapper">
         <HeaderComp />
         <Route path="/" exact component={ProductListing} />
         <Route path="/detail/:id" exact component={ProductDetail} />

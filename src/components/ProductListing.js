@@ -10,12 +10,15 @@ class ProductListing extends React.Component {
   componentDidMount() {
     this.props.fetchProducts();
   }
+
   render() {
     //console.log(this.props);
     const { products } = this.props;
+
     if (!products) {
       return <div>...loading</div>;
     }
+
     return (
       <Container text>
         <ProductCard products={products} />

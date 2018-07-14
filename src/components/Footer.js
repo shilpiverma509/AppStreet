@@ -2,7 +2,7 @@ import React from "react";
 import { Segment } from "semantic-ui-react";
 
 const Footer = () => (
-  <Segment clearing className="ui sticky">
+  <Segment clearing className="ui sticky footer">
     <div className="ui horizontal divided list">
       <div className="item">
         <div className="content">
