@@ -3,7 +3,29 @@ import { Header, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const HeaderComp = () => (
-  <Segment clearing>
+  <div className="topNav" id="myTopNav">
+    <Link className="navlink" to="/" className="active">
+      Home
+    </Link>
+    <Link className="navlink" to="/about" className="active">
+      About
+    </Link>
+    <Link className="navlink" to="/contact" className="active">
+      Contact
+    </Link>
+    <Link className="navlink" to="/bag" className="active">
+      Bag
+    </Link>
+    <Link className="navlink" to="#">
+      <i class="bars icon" />
+    </Link>
+  </div>
+);
+
+export default HeaderComp;
+
+/*
+<Segment clearing>
     <Header className="header-name" floated="left">
       MY AWESOME SHOP
     </Header>
@@ -32,6 +54,4 @@ const HeaderComp = () => (
       </div>
     </Header>
   </Segment>
-);
-
-export default HeaderComp;
+  */
