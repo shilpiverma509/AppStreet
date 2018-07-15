@@ -8,6 +8,11 @@ h3 {
     font-size: 12px;
 }
 
+h2 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
 .ui.header {
     font-weight: 100;
 }
@@ -78,7 +83,7 @@ ul:not(.browser-default)>li {
     position: absolute;
     bottom: 0;
     width: 100%;
-    /* Footer height */
+    color: rgb(248, 155, 155);
 }
 
 @media (min-height: 320px) {
@@ -91,22 +96,9 @@ ul:not(.browser-default)>li {
     min-height: 600px;
 }
 
-@media only screen and (max-width: 570px) {
-    .item {
-        display: block;
-        width: 100%;
-        border: none;
-        display: none;
-    }
-}
-
-@media only screen and (min-width: 571px) {
-    .item {
-        display: block;
-        width: 30%;
-        border: none;
-        display: block;
-    }
+.ui.segment:last-child {
+    background-color: black;
+    color: white;
 }
 
 @media only screen and (max-width: 985px) {
@@ -116,27 +108,54 @@ ul:not(.browser-default)>li {
     }
 }
 
-.topNav {
-    background-color: #333;
+nav {
     overflow: hidden;
+    padding: 1em;
+    border-bottom: 1px solid #000;
 }
 
-.navlink {
-    float: right;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
+nav a {
+    color: #fff;
+}
+
+nav a:visited {
+    color: #fff;
+}
+
+nav .navWide {
+    display: none;
+    margin: 0 auto;
+}
+
+nav .navWide .wideDiv a {
     text-decoration: none;
-    font-size: 17px;
+    display: inline-block;
+    padding: 0 1em;
 }
 
-.navlink hover {
-    background-color: #ddd;
-    color: black
+nav .navNarrow i {
+    float: left;
+    cursor: pointer;
+    color: #fff;
 }
 
-.active {
-    background-color: #4CAF50;
-    color: white;
+nav .navNarrow .narrowLinks {
+    display: none;
+}
+
+nav .navNarrow .narrowLinks a {
+    text-decoration: none;
+    display: block;
+    float: left;
+    clear: left;
+    padding: 0.5em 0;
+}
+
+@media (min-width: 480px) {
+    nav .navWide {
+        display: block;
+    }
+    nav .navNarrow {
+        display: none;
+    }
 }

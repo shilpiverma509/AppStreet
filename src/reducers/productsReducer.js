@@ -2,9 +2,14 @@ import { FETCH_PRODUCTS, FETCH_PRODUCT } from "../actions/index";
 import _ from "lodash";
 
 export default function(state = { products: {}, product: {} }, action) {
+  /**
+   * we need to convert the list of object of products to object of products
+   * with id as key and object as value
+   * using _.mapKeys for pulling off the id property
+   * of the individual object
+   */
   switch (action.type) {
     case FETCH_PRODUCTS:
-      console.log("reducer", action.payload);
       if (action.payload.data.products.length > 0) {
         document.getElementById("loadMore").removeAttribute("disabled");
         if (!_.isEmpty(state.products)) {
@@ -17,7 +22,6 @@ export default function(state = { products: {}, product: {} }, action) {
         return Object.assign({}, state, {
           products: _.mapKeys(action.payload.data.products, "_id")
         });
-        //return { stateproducts: _.mapKeys(action.payload.data.products, "_id") };
       } else {
         document
           .getElementById("loadMore")
@@ -26,8 +30,6 @@ export default function(state = { products: {}, product: {} }, action) {
       }
 
     case FETCH_PRODUCT:
-      console.log(action.id);
-      console.log("reducer", action.payload);
       var data = action.payload.res.data;
 
       var colorAttribute = _.filter(data.attributes, function(attr) {
@@ -95,7 +97,6 @@ export default function(state = { products: {}, product: {} }, action) {
         storage: storage,
         name: selectedProductObj.name
       };
-      //return { ...product };
       return Object.assign({}, state, { product: product });
 
     default:

@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
-import ProductDetail from "./ProductDetail";
+
 import { fetchProducts } from "../actions/index";
 import { connect } from "react-redux";
 import { Container, Button } from "semantic-ui-react";
@@ -28,7 +28,6 @@ class ProductListing extends React.Component {
   }
 
   render() {
-    console.log("Hey checking this" + this.props);
     const { products } = this.props;
 
     if (!products) {
@@ -40,9 +39,7 @@ class ProductListing extends React.Component {
         <ProductCard products={products} />
         <br />
         <Button
-          onClick={() => {
-            this.loadMore(this.state.page);
-          }}
+          onClick={() => this.loadMore(this.state.page)}
           size="small"
           id="loadMore"
         >
@@ -58,6 +55,7 @@ function mapStateToProps(state) {
     products: state.data.products
   };
 }
+
 export default connect(
   mapStateToProps,
   { fetchProducts }

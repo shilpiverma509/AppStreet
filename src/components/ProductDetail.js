@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchSingleProduct } from "../actions";
-import { Button } from "semantic-ui-react";
 
 class ProductDetail extends React.Component {
   componentWillMount() {
@@ -21,16 +20,19 @@ class ProductDetail extends React.Component {
     return (
       <div className="ui segment container">
         <img
-          className="ui left medium image"
+          className="ui left floated small image"
           src={imageUrl}
           alt="productImage"
         />
         <div className="right">
-          <p>{name}</p>
+          <h2>{name}</h2>
           <hr align="left" width="100%" />
-          <p>{description}</p>
-          <p>&#8377;{mark_price}</p>
-          <hr align="left" width="100%" />
+          <div className="text">
+            <p>{description}</p>
+            <p>&#8377;{mark_price}</p>
+            <hr align="left" width="100%" />
+          </div>
+
           <div>
             <ul>
               {colors &&
@@ -53,10 +55,6 @@ class ProductDetail extends React.Component {
         </div>
       </div>
     );
-    <Button className="positive ui button">
-      <i className="cart arrow down" />
-      Add to Cart
-    </Button>;
   }
 }
 function mapStateToProps(state) {
