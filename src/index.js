@@ -3,20 +3,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
 import "./index.css";
 import HeaderComp from "./components/HeaderComp";
 
 import ProductListing from "./components/ProductListing";
 import ProductDetail from "./components/ProductDetail";
 import Footer from "./components/Footer";
-import reducers from "./reducers";
-import ReduxThunk from "redux-thunk";
+import configureStore from "./reducers/configureStore";
 
-//const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
-const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
+const store = configureStore();
+
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <BrowserRouter>
       <div className="wrapper">
         <HeaderComp />

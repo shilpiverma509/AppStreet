@@ -17,11 +17,17 @@ export default function(state = { products: {}, product: {} }, action) {
             state.products,
             _.mapKeys(action.payload.data.products, "_id")
           );
-          return Object.assign({}, state, { products: temp });
+          console.log("temp", temp);
+          // return Object.assign({}, state, { products: temp });
+          return { ...state, products: temp };
         }
-        return Object.assign({}, state, {
+        // return Object.assign({}, state, {
+        //   products: _.mapKeys(action.payload.data.products, "_id")
+        //});
+        return {
+          ...state,
           products: _.mapKeys(action.payload.data.products, "_id")
-        });
+        };
       } else {
         document
           .getElementById("loadMore")
@@ -97,7 +103,8 @@ export default function(state = { products: {}, product: {} }, action) {
         storage: storage,
         name: selectedProductObj.name
       };
-      return Object.assign({}, state, { product: product });
+      //return Object.assign({}, state, { product: product });
+      return { ...state, product };
 
     default:
       return state;
